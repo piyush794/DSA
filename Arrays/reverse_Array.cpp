@@ -1,3 +1,19 @@
+/*
+ Reverse The Array
+Easy
+Problem statement
+Given an array/list 'ARR' of integers and a position M. You have to reverse the array after that position.
+
+Example:
+
+We have an array ARR = {1, 2, 3, 4, 5, 6} and M = 3 , considering 0 
+based indexing so the subarray {5, 6} will be reversed and our 
+output array will be {1, 2, 3, 4, 6, 5}.
+
+Link to question : <a>https://www.codingninjas.com/studio/problems/reverse-the-array_1262298?topList=love-babbar-dsa-sheet-problems&utm_source=website&utm_medium=affiliate&utm_campaign=450dsatracker&leftPanelTab=0</a>
+
+*/
+
 #include<iostream>
 #include<vector>
 using namespace std;
