@@ -17,7 +17,7 @@ then the elements of this array in ascending order is [1, 2, 4, 5].  Clearly, th
 #include<iostream>
 #include<vector>
 using namespace std;
-
+/*
 vector<int> kthSmallLarge(vector<int> &arr, int n, int k)
 {
     
@@ -32,7 +32,7 @@ vector<int> kthSmallLarge(vector<int> &arr, int n, int k)
 	ans.push_back(arr[n-k]); // for kth largest number
 	return ans;
 	*/
-
+/*
 	//Approach 2
     vector<int> result(2);
 
@@ -62,6 +62,42 @@ vector<int> kthSmallLarge(vector<int> &arr, int n, int k)
 
     // Approach 3 
 
+}
+*/
+   // Approach 3 Quick Select  
+   
+int partition(vector<int> &arr, int low, int high) {
+    int pivot = arr[high];  // Pivot as the last element
+    int j = low;  // Pointer for smaller elements
+
+    for (int i = low; i < high; i++) {
+        if (arr[i] <= pivot) {
+            swap(arr[i], arr[j]);
+            j++;
+        }
+    }
+    swap(arr[j], arr[high]);  // Place pivot at correct position
+    return j;  // Return pivot index
+}
+
+int quickselect(vector<int> &arr, int low, int high, int k) {
+    if (low <= high) {
+        int pi = partition(arr, low, high);
+        
+        if (pi == k) return arr[pi];
+        else if (k < pi) return quickselect(arr, low, pi - 1, k);
+        else return quickselect(arr, pi + 1, high, k);
+    }
+    return -1;  // Edge case handling
+}
+
+
+vector<int> kthSmallLarge(vector<int> &arr, int n, int k) {
+    vector<int> temp = arr;  // Copy array to avoid modifying input
+    int ksmall = quickselect(temp, 0, n - 1, k - 1);  // k-th smallest (0-based index)
+    temp = arr;  // Reset array for next quickselect
+    int klarge = quickselect(temp, 0, n - 1, n - k);  // k-th largest
+    return {ksmall, klarge};
 }
 int main() {
     int t;
