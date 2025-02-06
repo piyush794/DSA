@@ -1,3 +1,17 @@
+/*
+Link - https://www.geeksforgeeks.org/problems/sort-an-array-of-0s-1s-and-2s4231/1
+Sort 0s, 1s and 2s
+Difficulty: Medium
+Given an array arr[] containing only 0s, 1s, and 2s. Sort the array in ascending order.
+
+You need to solve this problem without utilizing the built-in sort function.
+
+Examples:
+
+Input: arr[] = [0, 1, 2, 0, 1, 2]
+Output: [0, 0, 1, 1, 2, 2]
+Explanation: 0s 1s and 2s are segregated into ascending order.
+*/
 //{ Driver Code Starts
 #include <queue>
 #include<climits>
@@ -7,12 +21,10 @@
 using namespace std;
 
 
-
-
 // } Driver Code Ends
 class Solution {
   public:
-
+/* Brute Force APPROACH quick sort 
 int partition(vector<int>& arr, int low, int high) {
   
     // Choose the pivot
@@ -61,7 +73,55 @@ void quickSort(vector<int>& arr, int low, int high) {
         
         
     }
+    */
+    
+    /*Appoach 2 By making three counts */
+    /*
+    void sort012(vector<int> & arr){
+        int count0=0, count1=0,count2=0;
+        for (int i=0;i<arr.size();i++){
+            if(arr[i]==0)count0++;
+            
+            if(arr[i]==1)count1++;
+            if(arr[i]==2)count2++;
+        }
+        for(int i=0;i<count0;i++){
+            arr[i]=0;
+        }
+        for(int i= count0;i<count0+count1;i++){
+            arr[i]=1;
+        }
+        for(int i= count0+count1;i<count0+count1+count2;i++){
+            arr[i]=2;
+        }
+        */
+        
+    void sort012(vector<int> & arr){
+        int low =0,mid=0,high=arr.size()-1;
+        while(mid<=high){
+            if(arr[mid]==0){
+                swap(arr[low],arr[mid]);
+                mid++;
+                low++;
+            }
+            else if(arr[mid]==1){
+                mid++;
+            }
+            else{//arr[mid==2
+                swap(arr[mid],arr[high]);
+                high--;
+            }
+        }
+    }
+    
+    
+    
+    
 };
+
+
+
+
 
 //{ Driver Code Starts.
 int main() {
