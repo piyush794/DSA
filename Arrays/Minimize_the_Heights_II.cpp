@@ -1,4 +1,23 @@
+/* Link :https://www.geeksforgeeks.org/problems/minimize-the-heights3351/1
+Minimize the Heights II
+Difficulty: Medium
+Given an array arr[] denoting heights of N towers and a positive integer K.
 
+For each tower, you must perform exactly one of the following operations exactly once.
+
+Increase the height of the tower by K
+Decrease the height of the tower by K
+Find out the minimum possible difference between the height of the shortest and tallest towers after you have modified each tower.
+
+You can find a slight modification of the problem here.
+Note: It is compulsory to increase or decrease the height by K for each tower. After the operation, the resultant array should not contain any negative integers.
+
+Examples :
+
+Input: k = 2, arr[] = {1, 5, 8, 10}
+Output: 5
+Explanation: The array can be modified as {1+k, 5-k, 8-k, 10-k} = {3, 3, 6, 8}.The difference between the largest and the smallest is 8-3 = 5.
+*/
 #include <climits>
 #include <sstream>
 #include <iostream>
@@ -80,7 +99,7 @@ int main()
         int n, k;
         cin >> k;
         cin.ignore();
-        vector<int> a, b, c, d;
+        vector<int> a,b,c,d;
         string input;
         getline(cin, input);
         stringstream ss(input);
@@ -96,3 +115,29 @@ int main()
     return 0;
 }
 // } Driver Code Ends
+
+
+/*Variation of the same question when we can have negative values 
+since there allow the appearence of negative value, there is no need to check if the value is greater than 0. 
+
+in the for loop, we seperate the length into two parts: index [0, i -1] paired with + k,
+ while index [i, n - 1] paired with - k. and each time we calculate the min and max value, we cross the boundary, which ensures that we won't miss any possible one
+  int getMinDiff(vector<int> &arr, int k) {
+        // code here
+        sort(arr.begin(),arr.end());
+        int n=arr.size();
+        int ans = arr[n-1]-arr[0];
+        int small = arr[0]+k;
+        // cout<<small<<" ";
+        int large  = arr[arr.size()-1]-k;
+        // cout<<"large"<<large;
+        int mini,maxi;
+        for(int i=0;i<n-1;i++){
+            mini=min(small,arr[i+1]-k);
+            maxi=max(large,arr[i]+k);
+            
+            ans=min(ans,maxi-mini);
+        }
+        return ans;
+    }
+*/
