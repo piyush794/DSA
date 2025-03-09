@@ -1,3 +1,17 @@
+/* Link : https://www.geeksforgeeks.org/problems/overlapping-intervals--170633/1
+ Overlapping Intervals
+Difficulty: MediumAccuracy: 57.41%Submissions: 95K+Points: 4
+Given an array of Intervals arr[][], where arr[i] = [starti, endi]. The task is to merge all of the overlapping Intervals.
+
+Examples:
+
+Input: arr[][] = [[1,3],[2,4],[6,8],[9,10]]
+Output: [[1,4], [6,8], [9,10]]
+Explanation: In the given intervals we have only two overlapping intervals here, [1,3] and [2,4] which on merging will become [1,4]. Therefore we will return [[1,4], [6,8], [9,10]].*/
+
+
+
+
 //{ Driver Code Starts
 #include <bits/stdc++.h>
 using namespace std;
@@ -8,14 +22,11 @@ class Solution {
   public:
     vector<vector<int>> mergeOverlap(vector<vector<int>>& arr) {
         // Code here
-     int n = arr.size(); // size of the array
-
-    //sort the given intervals:
-    sort(arr.begin(), arr.end());
-
-    vector<vector<int>> ans;
-
-    for (int i = 0; i < n; i++) { // select an interval:
+     /*    
+    /// Approch 1 : Not optimal 
+    sort(arr.begin(),arr.end());
+    int n=arr.size();
+     for (int i = 0; i < n; i++) { // select an interval:
         int start = arr[i][0];
         int end = arr[i][1];
 
@@ -33,10 +44,26 @@ class Solution {
                 break;
             }
         }
-        ans.push_back({start, end});
+        ans.push_back({start, end});}*/
+     
+    // Approac 2 : Optimal     
+        sort(arr.begin(),arr.end());
+        	vector<vector<int>>ans ;
+	
+	int n=arr.size();
+	
+	for(int i=0;i<n;i++){
+		if(ans.empty() || ans.back()[1]<arr[i][0]){
+			ans.push_back(arr[i]);
+		}
+		else {
+			ans.back()[1] = max(arr[i][1],ans.back()[1]);
+
+		}
+
+	}
+	return ans;
     }
-    return ans;
-}
 
 };
 
