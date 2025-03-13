@@ -42,19 +42,6 @@ class Solution {
        */ 
         // Optimal Approach Using Kadane's Algo
         
-    //     int maxy =INT_MIN;
-    //     int sum =0 ;
-    //     for (int i =0 ;i<arr.size();i++){
-    //         sum +=arr[i];
-    //         maxy = max(sum,maxy);
-            
-    //         if(sum<0){
-    //             sum=0;
-    //         }
-    //     }
-        
-    //     return maxy;
-    // }
     int maxy =INT_MIN;
     int sum =0 ;
     int start =0;
@@ -66,7 +53,6 @@ class Solution {
             maxy=sum;
             end=i;
         }
-        
         if(sum<0){
             sum=0;
         }
