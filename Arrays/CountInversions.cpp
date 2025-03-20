@@ -70,7 +70,22 @@ class Solution {
         return left1+right1+mer;
     }
   public:
-    // Brute Force Approach 
+  // Brute Force Approach 2
+    /*int i;
+  int count =0;
+  for (i=1;i<arr.size();i++){
+      int j =i-1;
+
+      while(j>=0){
+          if (arr[j]>arr[i]){
+              count ++;
+          }
+          j--;
+      }
+  }
+  return count;
+}*/
+    // Brute Force Approach 1
     int count=0;
     int inversionCount(vector<int>arr){
         /*for(int i=0 ;i<arr.size();i++){

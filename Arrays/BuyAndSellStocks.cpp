@@ -26,7 +26,22 @@ using namespace std;
 class Solution {
     public:
     
+
+    // Optimal
         int maxProfit(vector<int>& prices) {
+        //Brute Force 
+        /*
+        int profit=0;
+            for (int i=0;i<prices.size();i++){
+                for (int j =i+1 ;j<prices.size();j++){
+                    if(prices[j]<prices[i])
+                        profit=max(profit,prices[i]-prices[j]);
+                }
+                
+            }
+            return profit;
+          */
+         // Optimal Approach
             int minimal = prices[0];
             int maximal = prices[0];
             int profit =0 ;

@@ -1,4 +1,6 @@
-/*Two sum -Pairs with 0 Sum
+/* Leetcode :https://leetcode.com/problems/two-sum/submissions/
+ *** GFG :  https://www.geeksforgeeks.org/problems/count-pairs-with-given-sum5022/1 (Here answer is of this )
+Two sum -Pairs with 0 Sum
 Difficulty: EasyAccuracy: 31.49%Submissions: 475K+Points: 2Average Time: 20m
 Given an integer array arr, return all the unique pairs [arr[i], arr[j]] such that i != j and arr[i] + arr[j] == 0.
 
