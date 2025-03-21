@@ -14,63 +14,111 @@ Explanation: 20 and 80 are the only common elements in arr, brr and crr.*/
 #include <bits/stdc++.h>
 using namespace std;
 
-
 // } Driver Code Ends
 
-class Solution {
-  public:
+class Solution
+{
+public:
     // Function to find common elements in three arrays.
-    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2,
-                               vector<int> &arr3) {
-       vector<int>result;
-        int n1=arr1.size();
-        int n2=arr2.size();
-        int n3=arr3.size();
-        int i=0,j=0,k=0;
-        while(i<n1 && j<n2 && k<n3){
-            if(arr1[i]==arr2[j] && arr2[j]==arr3[k]){
-                if(result.empty() || result.back() != arr1[i])result.push_back(arr1[i]);
-                    i++; j++; k++;
-            }
-            else if (arr1[i]<arr2[j])i++;
-            else if (arr2[j]<arr3[k])j++;
-            else k++;
-            
+    vector<int> commonElements(vector<int> &arr1, vector<int> &arr2, vector<int> &arr3)
+    {
+        /*
+    // Hashing and set  Approach
+    
+    unordered_map<int ,int>mpp;
+    unordered_set<int>s;
+    
+    for (auto i :arr1){
+        s.insert(i);
+    }
+    for (auto i :s){
+        mpp[i]++;
+    }
+    s.clear();
+    for (auto i :arr2){
+        s.insert(i);
+    }
+        for (auto i :s){
+        mpp[i]++;
+    }
+    s.clear();
+    for (auto i :arr3){
+        s.insert(i);
+    }
+    for (auto i :s){
+        mpp[i]++;
+    }
+    vector<int> ans;
+    for (auto i : mpp){
+        if(i.second==3){
+            ans.push_back(i.first);
         }
-        if(result.size()==0)result.push_back(-1);
+    }
+    sort(ans.begin(),ans.end());
+        if (ans.empty())ans.push_back(-1);
+        return ans;
+    }*/
+        // Optimal Approach
+        vector<int> result;
+        int n1 = arr1.size();
+        int n2 = arr2.size();
+        int n3 = arr3.size();
+        int i = 0, j = 0, k = 0;
+        while (i < n1 && j < n2 && k < n3)
+        {
+            if (arr1[i] == arr2[j] && arr2[j] == arr3[k])
+            {
+                if (result.empty() || result.back() != arr1[i])
+                    result.push_back(arr1[i]);
+                i++;
+                j++;
+                k++;
+            }
+            else if (arr1[i] < arr2[j])
+                i++;
+            else if (arr2[j] < arr3[k])
+                j++;
+            else
+                k++;
+        }
+        if (result.size() == 0)
+            result.push_back(-1);
         return result;
-        
     }
 };
 
-
 //{ Driver Code Starts.
 
-int main() {
+int main()
+{
     int t;
     cin >> t;
     cin.ignore();
-    while (t--) {
+    while (t--)
+    {
         vector<int> arr, brr, crr;
         string input1;
         getline(cin, input1);
         stringstream ss1(input1);
         int number1;
-        while (ss1 >> number1) {
+        while (ss1 >> number1)
+        {
             arr.push_back(number1);
         }
         string input2;
         getline(cin, input2);
         stringstream ss2(input2);
         int number2;
-        while (ss2 >> number2) {
+        while (ss2 >> number2)
+        {
             brr.push_back(number2);
         }
         string input3;
         getline(cin, input3);
         stringstream ss3(input3);
         int number3;
-        while (ss3 >> number3) {
+        while (ss3 >> number3)
+        {
             crr.push_back(number3);
         }
         Solution ob;
@@ -79,7 +127,8 @@ int main() {
             cout << -1;
         for (int i = 0; i < res.size(); i++)
             cout << res[i] << " ";
-        cout << endl << "~\n";
+        cout << endl
+             << "~\n";
     }
 }
 // } Driver Code Ends
