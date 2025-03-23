@@ -1,3 +1,14 @@
+/*Link :  https://www.geeksforgeeks.org/problems/count-element-occurences/1
+More than n/k Occurrences
+Difficulty: EasyAccuracy: 58.35%Submissions: 119K+Points: 2Average Time: 45m
+Given an array arr and an element k. The task is to find the count of elements in the array that appear more than n/k times and n is length of arr.
+
+Examples :
+
+Input: arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
+Output: 2
+Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times.
+*/
 //{ Driver Code Starts
 // Initial function template for C++
 
@@ -9,6 +20,7 @@ using namespace std;
 
 class Solution {
   public:
+
     // Function to find all elements in array that appear more than n/k times.
     int countOccurence(vector<int>& arr, int k) {
         // Brute Force 
