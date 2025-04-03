@@ -10,9 +10,19 @@ Examples :
 Input: arr = [3, 1, 2, 2, 1, 2, 3, 3], k = 4
 Output: 2
 Explanation: In the given array, 3 and 2 are the only elements that appears more than n/k times.
+
+Intuition Behind Moores voting algo Working For k=2 :
+When the elements are the same as the candidate element, votes are incremented whereas when some other element is
+found (not equal to the candidate element), we decreased the count. This actually means that we are decreasing the
+priority of winning ability of the selected candidate, since we know that if the candidate is in majority it occurs more than
+N/2 times and the remaining elements are less than N/2. We keep decreasing the votes since we found some different
+element(s) than the candidate element. When votes become 0, this actually means that there are the equal number of
+votes for different elements, which should not be the case for the element to be the majority element. So the candidate
+element cannot be the majority and hence we choose the present element as the candidate and continue the same till all
+the elements get finished. The final candidate would be our majority element. We check using the 2nd traversal to see
+whether its count is greater than N/2. If it is true, we consider it as the majority element.
 */
-//{ Driver Code Starts
-// Initial function template for C++
+
 
 #include <bits/stdc++.h>
 using namespace std;

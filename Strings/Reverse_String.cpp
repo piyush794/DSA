@@ -27,7 +27,7 @@ class Solution {
         
         
         // Brute force 
-        string ans = " ";
+        string ans = "";
         for (int i =s.size()-1;i>=0;i--){
             ans+=s[i];
         }
