@@ -1,4 +1,14 @@
-//{ Driver Code Starts
+/*Link : https://www.geeksforgeeks.org/problems/array-subset-of-another-array2317/1
+Array Subset
+Difficulty: BasicAccuracy: 44.05%Submissions: 429K+Points: 1Average Time: 20m
+Given two arrays a[] and b[], your task is to determine whether b[] is a subset of a[].
+
+Examples:
+
+Input: a[] = [11, 7, 1, 13, 21, 3, 7, 3], b[] = [11, 3, 7, 1, 7]
+Output: true
+Explanation: b[] is a subset of a[]
+*/
 #include <bits/stdc++.h>
 using namespace std;
 
