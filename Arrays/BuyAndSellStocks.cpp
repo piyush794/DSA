@@ -43,12 +43,11 @@ class Solution {
           */
          // Optimal Approach
             int minimal = prices[0];
-            int maximal = prices[0];
             int profit =0 ;
             for(int i =1;i<prices.size();i++){
-                int cost; 
+                int cost;
                 cost = prices[i]-minimal ;
-                profit= max(profit ,cost); 
+                profit= max(profit ,cost);
                 minimal = min(prices[i],minimal);
             }
             return profit ;
@@ -57,7 +56,7 @@ class Solution {
     };
 
 int main(){
-    int T; 
+    int T;
     cin>>T;
     cin.ignore();
     while(T--){
