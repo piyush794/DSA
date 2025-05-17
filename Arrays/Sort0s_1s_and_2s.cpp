@@ -66,7 +66,6 @@ void quickSort(vector<int>& arr, int low, int high) {
 }
 
     void sort012(vector<int>& arr) {
-        // code here
         // Using quick sort 
         int n = arr.size(); 
         quickSort(arr,0 ,n-1);
