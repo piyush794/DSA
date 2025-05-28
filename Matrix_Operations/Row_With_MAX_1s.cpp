@@ -78,3 +78,36 @@ class Solution {
         return index;
     }
 };
+
+int main() {
+    vector<vector<int>> matrix;
+    int target;
+    int rows, cols;
+
+    cout << "Enter the number of rows: ";
+    cin >> rows;
+    cout << "Enter the number of columns: ";
+    cin >> cols;
+
+    cin.ignore(); // To handle newline character after cin >> cols
+
+    cout << "Enter matrix rows, space-separated:\n";
+    for (int i = 0; i < rows; i++) {
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        vector<int> row;
+        while (ss >> number) {
+            row.push_back(number);
+        }
+        matrix.push_back(row);
+    }
+
+
+    Solution obj;
+    int maxOnes = obj.rowWithMax1s(matrix);
+    cout<<"The row with Maximum 1's is  "<<maxOnes;
+
+    return 0;
+}
