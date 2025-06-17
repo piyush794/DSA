@@ -3,9 +3,8 @@
 using namespace std;
 
 
-// } Driver Code Ends
-
-
+/*The idea is that when a string is concatenated with itself,
+all possible rotations of the string will naturally appear as substrings within this concatenated string.*/
 class Solution {
   public:
     // Function to check if two strings are rotations of each other or not.

@@ -12,7 +12,7 @@ Examples
 Input: a[] = [1, 2, 3, 4, 5], b[] = [1, 2, 3]
 Output: 5
 Explanation: Union set of both the arrays will be 1, 2, 3, 4 and 5. So count is 5.*/
-// Initial template for C++
+
 #include <unordered_set>
 #include<climits>
 #include<sstream>
@@ -21,8 +21,6 @@ Explanation: Union set of both the arrays will be 1, 2, 3, 4 and 5. So count is 
 using namespace std;
 
 
-// } Driver Code Ends
-// User function template in C++
 
 class Solution {
   public:
@@ -39,8 +37,6 @@ class Solution {
         return s.size();
     }
 };
-
-//{ Driver Code Starts.
 
 int main() {
     int t;
@@ -74,4 +70,3 @@ int main() {
 
     return 0;
 }
-// } Driver Code Ends

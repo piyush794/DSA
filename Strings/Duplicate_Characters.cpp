@@ -11,7 +11,7 @@ ANSWER:- The answer should be [(‘E’,2)] because ‘E’ is the only characte
 Detailed explanation ( Input/output format, Notes, Images )
 Constraints :
 1 <= T <= 5
-1 <= N <= 10^5 
+1 <= N <= 10^5
 
 Time Limit = 1 sec
 Sample Input 1 :
@@ -26,7 +26,7 @@ A 3
 N 2
 Explanation for Sample Output 1 :
 In the first test case, the character ‘P’ has frequency 2 and is the only duplicate character in the string.
- In the second test case, the character ‘A’ has frequency 3 and the character ‘N’ has frequency 2. 
+ In the second test case, the character ‘A’ has frequency 3 and the character ‘N’ has frequency 2.
 Sample Input 2 :
 1
 5
@@ -38,7 +38,7 @@ A 5
 using namespace std;
 vector<pair<char, int>> duplicate_char(string s, int n)
 {
-    // Hashing Technique 
+    // Hashing Technique Optimal
     unordered_map<char, int> mp;
     vector<pair<char, int>> ans;
 
@@ -57,11 +57,53 @@ vector<pair<char, int>> duplicate_char(string s, int n)
     }
     sort(ans.begin(), ans.end());
     return ans;
+
+    /*    // optimal solution for this first count the freaquency of every word then pair it with its char use of two loop here
+
+    int k=255; //we take 255 as we know the word will not be bigger than 255
+    vector<int> freq(k);
+    for(int i=0;i<n;i++){
+        freq[s[i]]++; //it tells the frequency of each character
+    }
+    vector<pair<char,int>> ans;
+
+    this loop will be only till k
+    for(int i=0;i<k;i++){
+        if(freq[i]>1){
+        ans.push_back({char(i),freq[i]});
+        }
+    }
+
+    return ans;
+    */
+    /*brute force Approach
+    sort(s.begin(),s.end());
+    vector<pair<char, int>> result;
+    n=s.size();
+    for(int i=0;i<n;){
+    int count=1;
+    while( s[i]==s[i+1])
+    {
+        count++;
+        i++;
+    }
+    if(count>1)
+    {
+        result.push_back(make_pair(s[i], count));
+    }
+    i++;
+    }
+
+
+    return result;
+
+     }
+     */
 }
 int main()
 {
     string s = "hello world";
-    vector<pair<char, int>> result = duplicate_char(s,s.size());
+    vector<pair<char, int>> result = duplicate_char(s, s.size());
 
     // Print results
     for (auto p : result)
