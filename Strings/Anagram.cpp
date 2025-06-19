@@ -43,7 +43,21 @@ class Solution {
         }
         return true;    
 }
-
+/*Optimal Using a Vector Array
+// using a vector array 
+        
+        vector<int > freq(26,0);
+        for (auto ch: s1){
+            freq[ch-'a']++;
+        }
+        for (auto ch: s2){
+            freq[ch-'a']--;
+        }
+        for (int i : freq){
+            if (i!=0)return false ;
+        }
+        return true;
+*/
     
 };
 
