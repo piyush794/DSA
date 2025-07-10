@@ -9,7 +9,7 @@ int f(int n , vector<int>&dp){
     dp[n] =  f(n-1,dp)+f(n-2,dp);
     return dp[n];
 }
-// Tabulation Method base case to n and no recursion
+// Tabulation Method base case 0 to n and no recursion
 int tabulation_f(int n , vector<int>&dp){
     /// First add base cases 
     dp[0]=0;
