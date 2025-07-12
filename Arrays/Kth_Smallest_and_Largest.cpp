@@ -67,16 +67,19 @@ vector<int> kthSmallLarge(vector<int> &arr, int n, int k)
    // Approach 3 Quick Select  
    
 int partition(vector<int> &arr, int low, int high) {
-    int pivot = arr[high];  // Pivot as the last element
-    int j = low;  // Pointer for smaller elements
-
-    for (int i = low; i < high; i++) {
-        if (arr[i] <= pivot) {
-            swap(arr[i], arr[j]);
-            j++;
+    int pivot = arr[low];
+        
+        int i =low;
+        int j=high;
+        while(i<j){
+            while (arr[i]<=pivot&& i<high)i++;
+            while (arr[j]>pivot&& j>low)j--;
+            if (i<j)
+                swap(arr[i],arr[j]);
+            
         }
-    }
-    swap(arr[j], arr[high]);  // Place pivot at correct position
+        swap(arr[low],arr[j]); // Place pivot at correct position
+        
     return j;  // Return pivot index
 }
 
