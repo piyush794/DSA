@@ -18,33 +18,37 @@ Explanation: s3 has all characters of s1 and s2 and retains order of characters 
 */
 #include<bits/stdc++.h>
 using namespace std;
-class Solution {
+
+  class Solution {
   public:
-  bool solve(string& s1, string& s2, string& s3,int m,int n, int N,int i ,int j ,int k){
+  bool memo_solve(string& s1, string& s2, string& s3,int m,int n, int N,int i ,int j,vector<vector<int>>&dp){
         
+        int k = i+j;
         if (i==m && j==n && k==N)return true ;
-        if (k==N)return false ; // other string didnt finished all
-        bool result =false  ;
-        if (s1[i]==s3[k]){
-            result  = solve(s1,s2,s3,m,n,N,i+1,j,k+1);
-        }
-        if (result == true)return result ;
-        if (s2[j]==s3[k]){
-            result  = solve(s1,s2,s3,m,n,N,i,j+1,k+1);
-        }
-        return result ;
-  }
+         // other string didnt finished all
+        if(dp[i][j]!=-1){
+            return dp[i][j];
+            
+        } 
+        bool a  = (i<m && s1[i]==s3[k] && solve(s1,s2,s3,m,n,N,i+1,j,dp));
+        bool b =  (j<n && s2[j]==s3[k] && solve(s1,s2,s3,m,n,N,i,j+1,dp));
+        return dp[i][j] = a || b; 
+    }
     bool isInterleave(string& s1, string& s2, string& s3) {
         /// Recursive Approach Not Optimal 
         int m= s1.size(),n=s2.size(),N = s3.size();
         if (m+n != N)return false ;
         int i =0 ,j=0,k=0;
-        
-        return solve(s1,s2,s3,m,n,N,i,j,k);
-        
+        //  return solve(s1,s2,s3,m,n,N,i,j,k);
+
         // [Better Approach 1] Using Top-Down Memoization DP - O(m*n) Time and O(n*m) Space
+    
+        vector<vector<int>>dp(m+1,vector<int>(n+1,-1));
+        return memo_solve(s1,s2,s3,m,n,N,i,j,dp);
+        
     }
 };
+
 
 int main() {
     int t;
