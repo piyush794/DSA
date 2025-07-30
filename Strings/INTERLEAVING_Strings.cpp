@@ -55,29 +55,34 @@ class Solution {
     }
     
     /// Optimal  space optimized 
-    bool optimized(string& s1, string& s2, string& s3){
-        int m = s1.size(),n=s2.size(),N = s3.size();
-        vector<bool>prev(n+1) ;
+    
+    bool optimized(string s1,string s2,string s3){
+        int m = s1.size();
+        int n = s2.size();
+        if (m + n != s3.size()) return false;
+        vector<bool>prev(n+1);
         vector<bool>curr(n+1);
-        prev[0] = true ;
-        // Computing prev using only s2  (when s1 is empty)
 
-        for (int j =1 ;j<=n;j++){
-            prev[j] =( s2[j-1]==s3[j-1])&& prev[j-1];
-            
+        prev[0] = true ;
+
+        for (int j = 1 ; j<=n; j++){
+            prev[j] = (s2[j - 1] == s3[j - 1]) && prev[j - 1];
+
         }
-        // Process all characters of s1 and s2
+
         for (int i =1 ;i<=m;i++){
-            curr[0] =  (s1[i-1]==s3[i-1])&& prev[i-1];
-            for (int j =1 ;j<=n;j++){
-                curr[j] = (s1[i-1] == s3[i+j-1]&& curr[j-1] ) ||  s2[j-1]==s3[i+j-1]&& prev[j-1];
-                
+            
+            curr[0] = (s1[i-1]==s3[i-1]) && prev[0];
+        
+            for (int j =1;j<=n;j++){
+                curr[j] =
+                    (prev[j] && s1[i - 1] == s3[i + j - 1]) ||
+                    (curr[j - 1] && s2[j - 1] == s3[i + j - 1]);
             }
             prev = curr;
         }
-        return curr[n];
+        return prev[n];
     }
-
     bool isInterleave(string& s1, string& s2, string& s3) {
         /// Recursive Approach Not Optimal 
         int m= s1.size(),n=s2.size(),N = s3.size();
@@ -88,7 +93,7 @@ class Solution {
     
         vector<vector<bool>>dp(m+1,vector<bool>(n+1,-1));
         // return memo_solve(s1,s2,s3,m,n,N,i,j,dp);
-        return o(s1,s2,s3);
+        return optimized(s1,s2,s3);
     }
 };
 int main() {
@@ -97,9 +102,7 @@ int main() {
     cin.ignore();
     while (t--) {
         string s1,s2,s3;
-        cin >> s3;
-        cin >> s2;
-        cin >> s1;
+        cin>> s1>>s2>>s3;
         Solution obj;
         
         bool ans = obj.isInterleave(s1,s2,s3);
