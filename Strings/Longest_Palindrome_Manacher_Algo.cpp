@@ -14,6 +14,8 @@ Examples :
 Input: s = “forgeeksskeegfor” 
 Output: “geeksskeeg”
 Explanation: There are several possible palindromic substrings like “kssk”, “ss”, “eeksskee” etc. But the substring “geeksskeeg” is the longest among all.
+Resources :
+youtube video link : https://www.youtube.com/watch?v=06QIlUBLTz4
 */
 #include<bits/stdc++.h>
 using namespace std;
@@ -54,7 +56,8 @@ class Solution {
     }
     */
 
-    // Optimal Method using memoizationbool palindromeCheck(string &s ,int i ,int j){
+    // Better Method using memoizationbool palindromeCheck(string &s ,int i ,int j){
+    /*
     bool palindromeCheck(string &s ,int i ,int j,vector<vector<int>> &dp){
         if (i>=j)
             return 1;
@@ -85,6 +88,40 @@ class Solution {
         return s.substr(startpoint,maxlen);
         
     }
+    */
+    // Optimal Approach using Manacher's Algorithm 
+    string longestPalindrome(string &s){
+        
+        string st = "@#";
+        for (char c : s) {
+            st += c;
+            st += '#';
+        }
+        st+="$";
+        int n = st.length();
+        vector<int>lps(n,0);
+        int center = 0;
+        int right_end = 0 ;
+        for (int i =1 ;i<n-1;i++){
+            int mirror = center - (i - center);
+            if (i<right_end){
+                lps[i] = min(lps[mirror], right_end - i);
+            }
+            while (st[i + lps[i] + 1] == st[i - lps[i] - 1]){
+                lps[i]++;
+            }
+            if (i + lps[i] > right_end){
+                center = i ;
+                right_end = i+lps[i];
+            }
+        }
+       
+        int max_idx = max_element(lps.begin(),lps.end()) - lps.begin();
+        int maxlen = lps[max_idx];
+        int start = ( max_idx-maxlen-1)/2;
+        return s.substr(start,maxlen);
+    }
+    
 };
 int main() {
     int t;
