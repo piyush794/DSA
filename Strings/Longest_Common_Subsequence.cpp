@@ -97,6 +97,37 @@ public:
         // return tabula_solve(s1,s2,m,n,dp); // Bottom Up Approach Tabulation
         return optimized(s1, s2);
     }
+    // Brute Force approach -here we are creating all subsequences and then matching them and finding the longest one 
+    void create_all_subsequences(string s1,string s ,int idx,vector<string>& ans){
+        if (idx>=s1.size()){
+            if (s.size()>= 1)
+                ans.push_back(s);
+            return;
+        }
+        
+        create_all_subsequences(s1,s,idx+1,ans);
+        s+=s1[idx];
+        create_all_subsequences(s1,s,idx+1,ans);
+    }
+    int brute_lcs(string &s1,string &s2){
+        int m = s1.size();
+        int n = s2.size();
+        vector<string> s1_subsequences,s2_subsequences;
+        create_all_subsequences(s1,"",0,s1_subsequences);
+        create_all_subsequences(s2,"",0,s2_subsequences);
+        int maxlen = INT_MIN;
+        for (auto i : s1_subsequences){
+            for (auto j: s2_subsequences){
+                if (i==j){
+                    int curr = i.length();
+                    maxlen = max(maxlen,curr);
+                }
+            }
+        }
+        return maxlen;
+        
+    }
+
 };
 int main() {
     int t;
@@ -108,8 +139,10 @@ int main() {
         Solution obj;
         
         int ans = obj.lcs(s1,s2);
+        int temp = obj.brute_lcs(s1,s2);
 
-        cout << ans << endl;
+        cout <<"BY optimal Approach : "<< ans << endl;
+        cout <<"BY Brute Force Approach : "<< temp << endl;
         cout << "~" << endl;
     }
     return 0;
