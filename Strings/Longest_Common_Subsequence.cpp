@@ -127,6 +127,29 @@ public:
         return maxlen;
         
     }
+     //Naive solution using recursion only
+    int solve(string text1 , string text2 , int idx1 , int idx2 , int m ,int n ){
+        if ( idx1 >= m || idx2 >= n ){
+            return 0 ;
+
+        }
+        if ( text1[idx1] == text2[idx2] ){
+            return 1 + solve(text1,text2,idx1+1,idx2+1,m,n);
+        }
+        else {
+            return max(
+                solve(text1,text2,idx1+1,idx2,m,n),
+                solve(text1,text2,idx1,idx2+1,m,n)
+            );
+        }
+
+    }
+    int naive_lcs(string &s1, string &s2) {
+        // code here
+        int m = s1.size();
+        int n = s2.size();
+        return solve(s1 , s2, 0 , 0 , m , n);
+    }
 
 };
 int main() {
@@ -140,7 +163,8 @@ int main() {
         
         int ans = obj.lcs(s1,s2);
         int temp = obj.brute_lcs(s1,s2);
-
+        int naive = obj.naive_lcs(s1,s2);
+        cout <<"BY Naive Approach : "<< naive << endl;
         cout <<"BY optimal Approach : "<< ans << endl;
         cout <<"BY Brute Force Approach : "<< temp << endl;
         cout << "~" << endl;
