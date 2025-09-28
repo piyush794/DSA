@@ -26,6 +26,9 @@ x x
 We are able to use character 'x' (at index 2 in s) in both subsequences as it appears on index 1 in subsequence A and index 0 in subsequence B. */
 
 // !! Hint !! : solve as similar to Longest common subsequences just indexes of common element should not be same.
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
 class Solution {
   public:
     // Optimal approach using dp 
@@ -52,3 +55,19 @@ class Solution {
         return dp[0][0];
     }
 };
+int main() {
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--) {
+        string s1;
+        cin>>s1;
+        Solution obj;
+        
+        int ans = obj.LongestRepeatingSubsequence(s1);
+        
+        cout <<"BY optimal Approach : "<< ans << endl;
+        cout << "~" << endl;
+    }
+    return 0;
+}
