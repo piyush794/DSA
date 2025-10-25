@@ -21,6 +21,9 @@ As mentioned in the problem description there will be no extra spaces in the las
 Placing first and second word in first line and third word on second line would take a cost of 02 + 42 = 16 (zero spaces on first line and 6-2 = 4 spaces on second),
  which isn't the minimum possible cost.
  */
+#include<bits/stdc++.h>
+#include <iostream>
+using namespace std;
 class Solution {
   public:
     vector<vector<int>> dp;
@@ -64,6 +67,31 @@ class Solution {
         return rec(arr, 0, 0, k);
     }
 };
-int main(){
+int main() {
 
+    int t;
+    cin >> t;
+    cin.ignore();
+    while (t--) {
+
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+        int k ;
+        cin >> k ;
+
+        Solution ob;
+
+        int ans  = ob.solveWordWrap(arr,k);
+        cout << ans;
+
+    }
+    return 0;
 }
+
+
