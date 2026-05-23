@@ -1,5 +1,6 @@
-import java.util.HashMap
-import java.util.Scanner
+// This is a basic to understand how to use hashMap data structure in java //
+import java.util.HashMap;
+import java.util.Scanner;
 class hash_Map{
     public static void main (String [] args){
         int n ;
